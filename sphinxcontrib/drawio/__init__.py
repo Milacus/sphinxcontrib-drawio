@@ -250,9 +250,10 @@ class DrawIOConverter(ImageConverter):
         if builder.config._display:
             new_env["DISPLAY"] = ":{}".format(builder.config._display)
 
-        if ('ELECTRON_RUN_AS_NODE' in new_env):
-            # This env var will cause the drawio desktop app to not run properly
-            new_env.pop("ELECTRON_RUN_AS_NODE")
+        # This environment variable prevents the drawio application from starting.
+        # This is automatically set within certain Visual Studio Code contexts,
+        # such as for the reStructuredText (sphinx) preview.
+        new_env.pop("ELECTRON_RUN_AS_NODE", None)
 
         logger.info(f"(drawio) '{input_relpath}' -> '{export_relpath}'")
         try:
