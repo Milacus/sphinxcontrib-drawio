@@ -12,6 +12,6 @@ def test_imgconverter(directives: List[Tag]):
     assert img.name == "img"
     # This will have been converted from our exported
     # SVG to PNG by sphinx.ext.imgconverter
-    assert img["src"] == "_images/box.png"
-    assert img["alt"] == "_images/box.png"
+    assert img["src"] == "_images/box.svg"
+    assert img["alt"] == "_images/box.svg"
     assert img["class"] == ["drawio"]
