@@ -286,7 +286,6 @@ def on_config_inited(app: Sphinx, config: Config) -> None:
             fd = fp.fileno()
             xvfb = Popen(
                 ["Xvfb", "-displayfd", str(fd), "-screen", "0", "1280x768x16"],
-                pass_fds=(fd,),
                 stdout=PIPE,
                 stderr=PIPE,
             )
