@@ -65,24 +65,20 @@ def test_align(directives: List[Tag]):
 # noinspection PyTypeChecker
 @pytest.mark.sphinx("html", testroot="width-height")
 def test_width_height(images: List[Path]):
-    # https://github.com/jgraph/drawio-desktop/issues/254
-    # Widths and heights are not exact
 
-    assert get_image_size(images[0]) == (100, 52)
-    assert get_image_size(images[1]) == (197, 100)
-    assert get_image_size(images[2]) == (1000, 508)
+    assert get_image_size(images[0])[0] == 100
+    assert get_image_size(images[1])[1] == 100
+    assert get_image_size(images[2])[0] == 1000
 
     # deprecated drawio directive
-    assert get_image_size(images[3]) == (100, 52)
-    assert get_image_size(images[4]) == (197, 100)
-    assert get_image_size(images[5]) == (1000, 508)
+    assert get_image_size(images[3])[0] == 100
+    assert get_image_size(images[4])[1] == 100
+    assert get_image_size(images[5])[0] == 1000
 
 
 # noinspection PyTypeChecker
 @pytest.mark.sphinx("html", testroot="scale")
 def test_scale(images: List[Path]):
-    # https://github.com/jgraph/drawio-desktop/issues/254
-    # Scale is not exact
 
     # actual image size is 124x63
     assert get_image_size(images[0]) == (245, 124)
